@@ -13,6 +13,7 @@ Graph createGraph(int V){
 
 void addEdge(Graph G, vertex src, vertex dest, int weight){
     Edge edge;
+    edge.u = src;
     edge.v = dest;
     edge.weight = weight;
     G->adj[src].push_back(edge);

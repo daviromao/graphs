@@ -14,8 +14,12 @@ class VertexCost{
 
 class Edge {
     public:
+        vertex u;
         vertex v;
         int weight;
+    bool operator<(const Edge &other) const{
+        return weight < other.weight;
+    }
 };
 
 using namespace std;
