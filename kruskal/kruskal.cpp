@@ -2,78 +2,74 @@
 #include <algorithm>
 #include "../lib/graph.h"
 
-vertex find(vertex u, vertex parent[]){
+vector<vertex> parent;
+vector<int> ranks;
+vector<Edge> mst;
+vector<Edge> E;
+int n, m;
+
+vertex find(vertex u)
+{
     if(u==parent[u]) return u;
-    return parent[u] = find(parent[u], parent);
+    return parent[u] = find(parent[u]);
 }
 
-void join(vertex u, vertex v, int rank[], vertex parent[]){
+void union_sets(vertex u, vertex v)
+{
+    if(ranks[u] < ranks[v])
+        swap(u, v);
 
-    if(rank[u] >= rank[v]){
-        parent[v]=u;
-        if(rank[u] == rank[v]){
-            rank[u]++;
-        }
-    }else{
-        parent[u] = v;
-        if (rank[u] == rank[v])
-        {
-            rank[v]++;
-        }
-    }
+    parent[v] = u;
+
+    if(ranks[u] == ranks[v])
+        ranks[u]++;
 }
 
-void kruskal(Graph G, vector<Edge> E, vector<Edge> &mst){
+void make_set(vertex u)
+{
+    parent[u] = u;
+    ranks[u] = 0;
+}
+
+void kruskal()
+{
     sort(E.begin(), E.end());
 
-    vertex parent[G->V];
-    int rank[G->V];
+    for(int u = 0; u < n; u++)
+        make_set(u);
 
-    //make-set
-    for(int v = 0; v < G->V; v++){
-        parent[v] = v;
-        rank[v] = 1;
-    }
-
-    for(Edge e : E)
-    {
-        vertex u = find(e.u, parent);
-        vertex v = find(e.v, parent);
+    for(Edge edge : E){
+        vertex u = find(edge.u);
+        vertex v = find(edge.v);
 
         if(u != v){
-            mst.push_back(e);
-            join(u, v, rank, parent);
+            mst.push_back(edge);
+            union_sets(u, v);
         }
     }
 }
 
 int main()
 {
-
-    int n, m;
     cin >> n >> m;
 
-    Graph G = createGraph(n);
-    vector<Edge> mst;
-    vector<Edge> E;
+    int u, v, w;
 
-    for (int i = 0; i < m; i++)
-    {
-        int u, v, w;
+    for (int i = 0; i < m; i++){
         cin >> u >> v >> w;
         u--, v--;
-
         E.push_back({u, v, w});
-        addUndirectEdge(G, u, v, w);
     }
 
-    kruskal(G, E, mst);
+    parent = vector<vertex>(n);
+    ranks = vector<int>(n);
+
+    kruskal();
 
     int resp = 0;
     
-    for(Edge e : mst){
-        resp+= e.weight;
+    for(Edge edge : mst){
+        resp+= edge.weight;
+        cout << edge.u << " " << edge.v << " " << edge.weight << endl;
     }
-
-    cout << resp << endl;
 }
