@@ -38,10 +38,10 @@ make all
 #### *O comando para executar cada algoritmo segue as especificações feitas pelo professor no documento que enuncia o projeto.*
 
 > [!IMPORTANT]
-> Sobre o a entrada do Ford-Fulkerson:
-> Entrada recebe n e m, o número de vértices e arestas do grafo, respectivamente.
-> Em seguida, m linhas com 3 inteiros u, v e c, indicando que há uma aresta de u para v com capacidade.
-> Por fim, dois inteiros s e t, indicando a fonte e o target do grafo.
+> Sobre o a entrada do Ford-Fulkerson:\n
+> Entrada recebe n e m, o número de vértices e arestas do grafo, respectivamente.\n
+> Em seguida, m linhas com 3 inteiros u, v e c, indicando que há uma aresta de u para v com capacidade.\n
+> Por fim, dois inteiros s e t, indicando a fonte e o target do grafo.\n
 
 > [!NOTE]
 > Adicionamos o ford-fulkerson no bat1.
