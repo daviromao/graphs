@@ -112,8 +112,6 @@ int main(int argc, char const *argv[])
     ranks = vector<int>(n);
     kruskal();
 
-    int resp = 0;
-
     ofstream file_out;
     if (out_name != "")
     {
