@@ -48,27 +48,98 @@ void kruskal()
     }
 }
 
-int main()
+int main(int argc, char const *argv[])
 {
-    cin >> n >> m;
+    int opt;
+    bool solution = false;
+
+    string in_name = "";
+    string out_name = "";
+
+    while ((opt = getopt(argc, (char *const *)argv, "ho:f:s")) != -1)
+    {
+        switch (opt)
+        {
+        case 'h':
+            cout << "Help:\n"
+                 << "-h           : mostra o help\n"
+                 << "-o <arquivo> : redireciona a saida para o \"arquivo\"\n"
+                 << "-f <arquivo> : indica o \"arquivo\" que contém o grafo de entrada\n"
+                 << "-s           : mostra a solução\n";
+            return 0;
+        case 's':
+            solution = true;
+            break;
+        case 'f':
+            in_name = optarg;
+            break;
+        case 'o':
+            out_name = optarg;
+            break;
+        default:
+            cerr << "Use: " << argv[0] << " [-h] [-o output_file] [-f input_file] [-s show_solution]\n";
+            return EXIT_FAILURE;
+        }
+    }
+
+    if (in_name == "")
+    {
+        cerr << "Especifique o arquivo de entrada! Utilize: -f" << endl;
+        return EXIT_FAILURE;
+    }
+
+    ifstream file_in(in_name);
+
+    if (not file_in)
+    {
+        cerr << "Não foi possível abrir o arquivo: " << in_name << endl;
+        return EXIT_FAILURE;
+    }
+
+    file_in >> n >> m;
 
     int u, v, w;
 
     for (int i = 0; i < m; i++){
-        cin >> u >> v >> w;
+        file_in >> u >> v >> w;
         u--, v--;
         E.push_back({u, v, w});
     }
 
+    file_in.close();
+
     parent = vector<vertex>(n);
     ranks = vector<int>(n);
-
     kruskal();
 
     int resp = 0;
-    
-    for(Edge edge : mst){
-        resp+= edge.weight;
-        cout << edge.u << " " << edge.v << " " << edge.weight << endl;
+
+    ofstream file_out;
+    if (out_name != "")
+    {
+        file_out.open(out_name);
+        if (!file_out)
+        {
+            cerr << "Não foi possível gravar no arquivo: " << out_name << endl;
+            return EXIT_FAILURE;
+        }
+        cout.rdbuf(file_out.rdbuf());
     }
+
+
+    if(solution){
+        for(Edge edge : mst){
+            cout << "("<<edge.u+1<< ","<<edge.v+1<< ") ";
+        }
+    }else{
+        int resp = 0;
+        for(Edge edge : mst){
+            resp += resp;
+        }
+        cout << resp << endl;
+    }
+
+    cout << endl;
+
+    file_out.close();
 }
