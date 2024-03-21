@@ -134,7 +134,7 @@ int main(int argc, char const *argv[])
     }else{
         int resp = 0;
         for(Edge edge : mst){
-            resp += resp;
+            resp += edge.weight;
         }
         cout << resp << endl;
     }
