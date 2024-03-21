@@ -22,7 +22,7 @@ cd prim
 make all
 ```
 
-####*O comando para executar cada algoritmo segue as especificações feitas pelo professor no documento que enuncia o projeto.*
+#### *O comando para executar cada algoritmo segue as especificações feitas pelo professor no documento que enuncia o projeto.*
 
 > [!NOTE]
 > Adicionamos o ford-fulkerson no bat1.
