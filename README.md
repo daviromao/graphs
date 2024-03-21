@@ -3,7 +3,7 @@
 #### Curso: Ciência da Computação
 
 #### instruções de como rodar:
-'''
+```
 cd kosaraju
 make all
 
@@ -15,7 +15,7 @@ make all
 
 cd prim
 make all
-'''
+```
 
 
 #### observações:
