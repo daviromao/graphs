@@ -38,7 +38,7 @@ int main()
 
     Graph G = createGraph(n);
     vector<vertex> parent(n, -1);
-    vector<int> dist(n, INFINITY);
+    vector<int> dist(n, INT_MAX);
 
     for(int i = 0; i < m; i++){
         int u, v, w;

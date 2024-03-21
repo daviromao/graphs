@@ -39,7 +39,7 @@ int main ()
 
     Graph G = createGraph(n);
     vector<vertex> parent(n, -1);
-    vector<int> cost(n, INFINITY);
+    vector<int> cost(n, INT_MAX);
 
     for (int i=0; i<m; i++) {
         int u, v, w;
