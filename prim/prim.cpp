@@ -1,6 +1,4 @@
-#include <iostream>
-#include <limits.h>
-#include <queue>
+#include <bits/stdc++.h>
 #include "../lib/graph.h"
 
 using namespace std;
@@ -41,7 +39,7 @@ int main ()
 
     Graph G = createGraph(n);
     vector<vertex> parent(n, -1);
-    vector<int> cost(n, INT_MAX);
+    vector<int> cost(n, INFINITY);
 
     for (int i=0; i<m; i++) {
         int u, v, w;

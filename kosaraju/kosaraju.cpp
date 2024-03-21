@@ -1,7 +1,4 @@
-#include <iostream>
-#include <limits.h>
-#include <queue>
-#include <algorithm>
+#include <bits/stdc++.h>
 #include "../lib/graph.h"
 
 using namespace std;
