@@ -3,7 +3,7 @@
 #### Curso: Ciência da Computação
 
 #### instruções de como rodar:
-´´´
+´´´C++
 cd kosaraju
 make all
 
