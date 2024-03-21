@@ -17,8 +17,6 @@ cd prim
 make all
 ```
 
-
-#### observações:
-
-Adicionamos o ford-fulkerson no bat1.
-!Dentro da pasta do ford-fulkerson há um "mini" bat para testar ele!
+> [!NOTE]
+> Adicionamos o ford-fulkerson no bat1.
+Dentro da pasta do ford-fulkerson há um "mini" bat para testar ele!
