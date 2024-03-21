@@ -112,8 +112,6 @@ int main(int argc, char const *argv[])
     ranks = vector<int>(n);
     kruskal();
 
-    int resp = 0;
-
     ofstream file_out;
     if (out_name != "")
     {
@@ -134,7 +132,7 @@ int main(int argc, char const *argv[])
     }else{
         int resp = 0;
         for(Edge edge : mst){
-            resp += resp;
+            resp += edge.weight;
         }
         cout << resp << endl;
     }
