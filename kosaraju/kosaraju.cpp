@@ -134,5 +134,7 @@ int main(int argc, char const *argv[])
         cout << endl;
     }
 
+    delete G;
+
     file_out.close();
 }

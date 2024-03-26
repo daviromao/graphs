@@ -129,5 +129,7 @@ int main(int argc, char const *argv[])
         cout << tc << endl;
     }
 
+    delete G;
+
     return 0;
 }
